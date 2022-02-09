@@ -20,6 +20,11 @@ float *a1_calculateTerm2(float* x, float* y, int n,float* result);
 float *a1_calculateTerm3(float* x, int n, float *result);
 float *a1_calculateTerm4(float* x, int n, float* result);
 
+float *a0_calculateTerm1(float* x, float* y, int n, float* result);
+float *a0_calculateTerm2(float* x, float* y, int n,float* result);
+float *a0_calculateTerm3(float* x, int n, float *result);
+float *a0_calculateTerm4(float* x, int n, float* result);
+
 int main(int argc, char **argv){
 
     float* ind = malloc(MAX_INT_BUFFER_SIZE * sizeof(float));
@@ -50,6 +55,10 @@ int main(int argc, char **argv){
 
 
     //calculate a0     
+    float* a0Term1 = malloc(sizeof(float));
+    float* a0Term2 = malloc(sizeof(float));
+    float* a0Term3 = malloc(sizeof(float));
+    float* a0Term4 = malloc(sizeof(float));
 
     // calculate a1
     float* a1Term1 = malloc(sizeof(float));
@@ -60,6 +69,9 @@ int main(int argc, char **argv){
     a1_calculateTerm1(ind, dep, numberOfPoints, a1Term1);
     a1_calculateTerm2(ind, dep, numberOfPoints, a1Term2);
     a1_calculateTerm3(ind, numberOfPoints, a1Term3);
+    a1_calculateTerm4(ind, numberOfPoints, a1Term4);
+
+    a0_calculateTerm1(ind, dep, numberOfPoints, a0Term1);
 
     return 0;
 }
@@ -93,5 +105,29 @@ float *a1_calculateTerm3(float* x, int n, float *result){
 }
 
 float *a1_calculateTerm4(float* x, int n, float* result){
+    for(int i = 0; i < n; i++){
+        *result += *(x + i);
+    }
+    *result = powf(*result, 2);
+    return result; 
+}
+
+float *a0_calculateTerm1(float* x, float* y, int n, float* result){
+    float bufferX = 0;
+    float bufferY = 0;
+    for(int i = 0; i < n; i++){
+        bufferX += powf(*(x + i), 2);
+        bufferY += *(y + i);
+    }
+    *result = bufferX * bufferY;
+    return result; 
+}
+float *a0_calculateTerm2(float* x, float* y, int n,float* result){
+
+}
+float *a0_calculateTerm3(float* x, int n, float *result){
+
+}
+float *a0_calculateTerm4(float* x, int n, float* result){
 
 }
