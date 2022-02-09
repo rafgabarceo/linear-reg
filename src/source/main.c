@@ -74,9 +74,9 @@ float *a1_calculateTerm1(float* x, float* y, int n, float* result){
 }
 
 float *a1_calculateTerm2(float* x, float* y, int n, float* result){
-    float bufferX;
-    float bufferY;
-    for(int i = 0; i < n; i ++){
+    float bufferX = 0;
+    float bufferY = 0;
+    for(int i = 0; i < n; i++){
         bufferX += *(x + i);
         bufferY += *(y + i);
     }
