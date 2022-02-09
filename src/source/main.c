@@ -10,13 +10,14 @@ Expected output would be an equation where the two constants a_0 and a_1 are cal
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <math.h>
 
 #define MAX_BUFFER_SIZE 8
 #define MAX_INT_BUFFER_SIZE 1024
 
 float *a1_calculateTerm1(float* x, float* y, int n, float* result);
 float *a1_calculateTerm2(float* x, float* y, int n,float* result);
-float *a1_calculateTerm3(float* x, int n, float* y, float *result);
+float *a1_calculateTerm3(float* x, int n, float *result);
 float *a1_calculateTerm4(float* x, int n, float* result);
 
 int main(int argc, char **argv){
@@ -58,7 +59,7 @@ int main(int argc, char **argv){
 
     a1_calculateTerm1(ind, dep, numberOfPoints, a1Term1);
     a1_calculateTerm2(ind, dep, numberOfPoints, a1Term2);
-    
+    a1_calculateTerm3(ind, numberOfPoints, a1Term3);
 
     return 0;
 }
@@ -84,8 +85,11 @@ float *a1_calculateTerm2(float* x, float* y, int n, float* result){
     return result; 
 }
 
-float *a1_calculateTerm3(float* x, int n, float* y, float *result){
-
+float *a1_calculateTerm3(float* x, int n, float *result){
+    for(int i = 0; i < n; i++){
+        *result += powf(*(x + i), 2.0);
+    }
+    return result; 
 }
 
 float *a1_calculateTerm4(float* x, int n, float* result){
