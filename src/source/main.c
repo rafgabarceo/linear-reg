@@ -102,7 +102,7 @@ int main(int argc, char **argv){
     a0 = (*a0Term1 - *a0Term2)/(*a1Term3 - *a1Term4);
     a1 = (*a1Term1 - *a1Term2)/(*a1Term3 - *a1Term4);
 
-    printf("Resulting equation: y = % 0.5f + %0.5fx", a0, a1);
+    printf("Resulting equation: y = % 0.5f + (%0.5fx)", a0, a1);
     
     return 0;
 }
